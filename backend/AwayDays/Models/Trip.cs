@@ -3,7 +3,7 @@ namespace AwayDays.Models;
 public class Trip
 {
     public Guid Id { get; set; }
-    public Guid MatchID { get; set; }
+    public Guid MatchId { get; set; }
     public Match Match { get; set; } = null!;
     public TravelMode TravelMode { get; set; }
     public int DistanceKm { get; set; }

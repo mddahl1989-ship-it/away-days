@@ -1,5 +1,3 @@
-using System.Security.Cryptography;
-
 namespace AwayDays.Models;
 
 public class Match
@@ -13,6 +11,6 @@ public class Match
     public int? GoalsBvB { get; set; }
     public int? GoalsOpponent { get; set; }
 
-    public List<TripleDES> Trips { get; set; } = [];
+    public List<Trip> Trips { get; set; } = [];
 
 }
