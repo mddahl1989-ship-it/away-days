@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using AwayDays.Models;
 
-namespace AwayDays.Dto.Models;
+namespace AwayDays.Dtos.Matches;
 
 public record CreateMatchDto(
-    [Required] DateTimeOffset? Kickoff,
+    [Required] DateTimeOffset? KickOff,
     [Required, StringLength(100, MinimumLength = 1)] string Opponent,
     [Required, StringLength(100, MinimumLength = 1)] string Venue,
     [Required] Competition?  Competition,
