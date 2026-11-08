@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/*
+  AwayDays: die Gelbe Wand als Grundfläche, Schwarz für Kopf, Anzeigetafel und Tickets.
+  Barlow (Beschilderungs-Grotesk) für Text, Doto (Punktmatrix) nur für Anzeigen.
+*/
+@theme {
+  --color-gelb: #fde100;
+  --color-gelb-tief: #e8cf00;
+  --color-schwarz: #000000;
+  --color-tafel: #0d0d0c;
+  --color-rot: #a3170f;
+  --color-led-rot: #ff5b4f;
+
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-condensed: "Barlow Condensed", "Barlow", ui-sans-serif, sans-serif;
+  --font-dot: "Doto Variable", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    background: var(--color-gelb);
+    color: var(--color-schwarz);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "tnum" 0;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.5;
+  }
+
+  /* Sichtbarer Tastaturfokus: Schwarz auf Gelb, Gelb auf Schwarz */
+  :focus-visible {
+    outline: 3px solid var(--color-schwarz);
+    outline-offset: 2px;
+  }
+
+  .on-black :focus-visible,
+  .on-black:focus-visible {
+    outline-color: var(--color-gelb);
+  }
+}
+
+@layer components {
+  /* Anzeigetafel: schwarzes Gehäuse mit Punktraster wie bei einer LED-Tafel */
+  .led-panel {
+    background-color: var(--color-tafel);
+    background-image: radial-gradient(circle, #222220 1.05px, transparent 1.35px);
+    background-size: 7px 7px;
+    border: 3px solid #262624;
+    border-radius: 14px;
+  }
+
+  .led {
+    font-family: var(--font-dot);
+    font-weight: 900;
+    color: var(--color-gelb);
+    text-shadow: 0 0 10px rgb(253 225 0 / 0.4);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+
+  .led-dim {
+    font-family: var(--font-dot);
+    font-weight: 800;
+    color: rgb(253 225 0 / 0.62);
+  }
+
+  /* Eintrittskarte: Abriss mit zwei ausgestanzten Halbkreisen */
+  .ticket {
+    --stub: 5.25rem;
+    --notch: 10px;
+    overflow: hidden;
+    background: var(--color-schwarz);
+    color: #fff;
+    border-radius: 6px;
+    -webkit-mask:
+      radial-gradient(circle var(--notch) at var(--stub) 0, transparent 97%, #000) top / 100% 51% no-repeat,
+      radial-gradient(circle var(--notch) at var(--stub) 100%, transparent 97%, #000) bottom / 100% 51% no-repeat;
+    mask:
+      radial-gradient(circle var(--notch) at var(--stub) 0, transparent 97%, #000) top / 100% 51% no-repeat,
+      radial-gradient(circle var(--notch) at var(--stub) 100%, transparent 97%, #000) bottom / 100% 51% no-repeat;
+  }
+
+  .ticket-stub {
+    width: var(--stub);
+    border-right: 2px dashed rgb(253 225 0 / 0.55);
+  }
+
+  @media (min-width: 640px) {
+    .ticket {
+      --stub: 6.5rem;
+      --notch: 11px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .ticket--large {
+      --stub: 9rem;
+      --notch: 14px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,53 @@
+# Testanfragen für die AwayDays API (in VS Code über "Send Request" ausführen).
+@api = http://localhost:5100/api
+
+### Alle Spiele der Saison 2026/27
+GET {{api}}/matches?season=2026
+
+### Nur Auswärtsspiele in der Champions League
+GET {{api}}/matches?season=2026&isHome=false&competition=ChampionsLeague
+
+### Suche nach Gegner (Groß-/Kleinschreibung egal)
+GET {{api}}/matches?q=werder
+
+### Spiel anlegen
+POST {{api}}/matches
+Content-Type: application/json
+
+{
+  "kickOff": "2027-01-08T20:30:00+01:00",
+  "opponent": "1. FSV Mainz 05",
+  "venue": "Westfalenstadion",
+  "competition": "Bundesliga",
+  "isHome": true,
+  "goalsBvB": null,
+  "goalsOpponent": null
+}
+
+### Leerer Body: 400 mit Fehlern pro Feld
+POST {{api}}/matches
+Content-Type: application/json
+
+{}
+
+### Fahrten der Saison
+GET {{api}}/trips?season=2026
+
+### Fahrt mit Ausgaben anlegen (matchId aus GET /matches einsetzen)
+POST {{api}}/trips
+Content-Type: application/json
+
+{
+  "matchId": "00000000-0000-0000-0000-000000000000",
+  "travelMode": "Train",
+  "distanceKm": 240,
+  "friends": 1,
+  "notes": "Zum Revierderby",
+  "expenses": [
+    { "category": "Tickets", "description": "Gästeblock", "amount": 19.5 },
+    { "category": "Travel", "description": "Regionalexpress", "amount": 12.8 }
+  ]
+}
+
+### Saisonbilanz 2026/27
+GET {{api}}/reports/season?season=2026
