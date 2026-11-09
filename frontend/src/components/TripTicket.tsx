@@ -1,6 +1,7 @@
 import type { Competition, TravelMode } from '../types/api'
 import { competitionLabels, fixtureLabel, formatEuro, formatNumber, formatShortDate, formatWeekday, plural, travelModeLabels } from '../lib/format'
 import ScorePlate from './ScorePlate'
+import StruckText from './StruckText'
 
 export interface TicketData {
   kickOff: string
@@ -38,7 +39,7 @@ export default function TripTicket({ trip, large = false }: { trip: TicketData; 
       <div className="grid min-w-0 flex-1 grid-cols-[auto_1fr] items-center gap-x-4 gap-y-3 py-4 pr-4 pl-4 sm:gap-x-6 md:grid-cols-[1fr_auto_auto] md:pr-5 md:pl-6">
         <div className="col-span-2 min-w-0 md:col-span-1">
           <p className={`font-condensed leading-[1.05] font-bold break-words text-white ${large ? 'text-3xl md:text-5xl' : 'text-[1.6rem]'}`}>
-            {fixtureLabel(trip)}
+            <StruckText source={fixtureLabel(trip)} />
           </p>
           <p className="mt-1 text-white/65">
             {trip.venue}, {competitionLabels[trip.competition]}

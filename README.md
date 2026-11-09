@@ -118,4 +118,8 @@ Die Seiten funktionieren ab 360 px Breite, sind mit der Tastatur bedienbar und v
 
 ## Startdaten
 
-Spielplan und Ergebnisse der Saison 2026/27 sind echt (Stand 8. November 2026, Quellen: hessenschau.de, uefa.com, dfb.de, bvb.de). Die Fahrten sind meine Stadionbesuche mit meinen Kosten: Dauerkarte 310 € für 21 Heimspiele (17 Bundesliga, 4 Champions League), also 14,76 € pro Spiel, dazu pro Heimspiel 50 € für Bulli und Verpflegung, Hoffenheim 70 €, München 100 €. Die Kilometer sind Schätzwerte.
+Spielplan und Ergebnisse der Saison 2026/27 sind echt (Stand 8. November 2026, Quellen: hessenschau.de, uefa.com, dfb.de, bvb.de). Die Fahrten sind meine Stadionbesuche mit meinen Kosten: Dauerkarte 310 € für 21 Heimspiele (17 Bundesliga, 4 Champions League), also 14,76 € pro Spiel, dazu pro Heimspiel 50 € für Bulli und Verpflegung, Hoffenheim 70 €, München 100 €.
+
+Dazu kommen die früheren Saisons 2022/23 bis 2025/26 mit allen Pflichtspielen (Bundesliga, Champions League und DFB-Pokal, Quelle: DFB-Datencenter). Seit dem 2:2 gegen Bayern am 8. Oktober 2022 war ich bei jedem Heimspiel, pauschal 35 € pro Spiel. Dazu kommen Auswärtsfahrten wie das Champions-League-Finale 2024 in Wembley (300 €), Heidenheim (80 €) und Tottenham in London (300 €). Alles steht in `Data/DbSeeder.History.cs`.
+
+Die Kilometer sind Schätzwerte. „Schalke“ wird in der App überall durchgestrichen.

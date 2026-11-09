@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import StruckText from './StruckText'
 
 const GLYPHS = 'ABCDEFGHJKLMNPRSTUVWXYZ0123456789'
 
@@ -41,7 +42,9 @@ export default function FlapText({ text, delay = 0 }: { text: string; delay?: nu
   return (
     <>
       <span className="sr-only">{text}</span>
-      <span aria-hidden="true">{frame}</span>
+      <span aria-hidden="true">
+        <StruckText source={text} shown={frame} />
+      </span>
     </>
   )
 }

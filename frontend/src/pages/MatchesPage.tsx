@@ -6,6 +6,7 @@ import { getTrips } from '../api/trips'
 import ConfirmButton from '../components/ConfirmButton'
 import ScorePlate from '../components/ScorePlate'
 import Segmented from '../components/Segmented'
+import StruckText from '../components/StruckText'
 import { ErrorBanner, Flash, Loading, PageHeader, inputClass, pageClass, primaryButton, textLink } from '../components/ui'
 import {
   competitionLabels,
@@ -192,7 +193,8 @@ function MatchRow({ match, tripId, onDelete }: { match: Match; tripId?: string; 
       </div>
 
       <div className="min-w-0">
-        <p className="text-xl leading-tight font-semibold">{fixtureLabel(match)}</p>
+        <p className="text-xl leading-tight font-semibold"><StruckText source={fixtureLabel(match)} />
+        </p>
         <p className="text-black/65">
           {match.venue}, {competitionLabels[match.competition]}
         </p>
@@ -223,3 +225,8 @@ function MatchRow({ match, tripId, onDelete }: { match: Match; tripId?: string; 
     </li>
   )
 }
+
+
+
+
+

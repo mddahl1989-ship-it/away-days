@@ -4,6 +4,7 @@ import { getMatches } from '../api/matches'
 import { getSeasonReport } from '../api/reports'
 import DepartureBoard from '../components/DepartureBoard'
 import ScorePlate from '../components/ScorePlate'
+import StruckText from '../components/StruckText'
 import { ErrorBanner, Loading, PageHeader, SectionTitle, inputClass, pageClass, textLink } from '../components/ui'
 import {
   categoryLabels,
@@ -104,7 +105,8 @@ export default function OverviewPage() {
                       <li key={m.matchId}>
                         <Link to={`/trips/${m.tripId}`} className="group block rounded-sm">
                           <ScorePlate {...m} size="md" />
-                          <span className="mt-2 block leading-tight font-semibold group-hover:underline">{m.opponent}</span>
+                          <span className="mt-2 block leading-tight font-semibold hyphens-auto [overflow-wrap:anywhere] group-hover:underline"><StruckText source={m.opponent} />
+                          </span>
                           <span className="text-sm text-black/60">
                             {formatShortDate(m.kickOff)}, {m.isHome ? 'Heim' : 'Auswärts'}
                           </span>

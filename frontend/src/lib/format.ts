@@ -83,8 +83,26 @@ export function seasonLabel(season: number): string {
   return `${season}/${String(season + 1).slice(2)}`
 }
 
-export function recentSeasons(count = 4): number[] {
-  return Array.from({ length: count }, (_, i) => currentSeason() - i)
+// Die erste Saison im Fahrtenbuch: 2022/23, seit dem 2:2 gegen Bayern im Oktober 2022.
+export const FIRST_SEASON = 2022
+
+// Alle Saisons vom aktuellen Jahr zurück bis zur ersten, neueste zuerst
+export function recentSeasons(): number[] {
+  return Array.from({ length: currentSeason() - FIRST_SEASON + 1 }, (_, i) => currentSeason() - i)
+}
+
+// Saison eines Spiels: Anstoß ab Juli zählt zur neuen Saison
+export function seasonOf(iso: string): number {
+  const d = new Date(iso)
+  return d.getMonth() >= 6 ? d.getFullYear() : d.getFullYear() - 1
+}
+
+// „Schalke“ wird überall durchgestrichen. In <option> geht kein Markup,
+// dort hilft das Unicode-Zeichen U+0336 (Durchstreichung) hinter jedem Buchstaben.
+export const STRUCK_WORD = 'Schalke'
+
+export function strikePlain(text: string): string {
+  return text.replaceAll(STRUCK_WORD, [...STRUCK_WORD].map((c) => `${c}\u0336`).join(''))
 }
 
 // ISO-Datum aus der API -> Wert für <input type="datetime-local"> in lokaler Zeit
