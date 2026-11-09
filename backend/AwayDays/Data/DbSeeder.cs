@@ -5,8 +5,9 @@ namespace AwayDays.Data;
 
 // Startdaten für die Entwicklung: die echten BVB-Pflichtspiele der Saison 2026/27
 // bis zum 07.11.2026 (mit Ergebnis) und die nächsten fünf Spiele (ohne Ergebnis).
+// Die früheren Saisons stehen in DbSeeder.History.cs.
 // Die Fahrten sind meine Stadionbesuche mit meinen Kosten. Die Kilometer sind Schätzwerte.
-public static class DbSeeder
+public static partial class DbSeeder
 {
     private const string Home = "Westfalenstadion";
 
@@ -66,6 +67,9 @@ public static class DbSeeder
                 (ExpenseCategory.Food, "Essen und Getränke", 27.00m)),
             HomeTrip(betis, "Mittwochabend unter Flutlicht."),
             HomeTrip(elversberg, null));
+
+        // Frühere Saisons seit Oktober 2022
+        AddPastSeasons(db);
 
         // Alles mit einem einzigen SaveChangesAsync speichern.
         await db.SaveChangesAsync();

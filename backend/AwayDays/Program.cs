@@ -47,6 +47,7 @@ app.UseExceptionHandler();
 app.UseStatusCodePages();
 app.UseCors("Frontend");
 
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
