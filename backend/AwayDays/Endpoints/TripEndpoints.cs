@@ -47,7 +47,7 @@ public static class TripEndpoints
     }
 
     private static async Task<Ok<IReadOnlyList<TripSummaryDto>>> GetAllTrips(
-        [Range(2000, 2100)] int? season,
+        [Range(2000, 2100, ErrorMessage = "Die Saison muss zwischen 2000 und 2100 liegen.")] int? season,
         ITripService tripService)
     {
         return TypedResults.Ok(await tripService.GetAllAsync(season));

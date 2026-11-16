@@ -21,7 +21,7 @@ public static class ReportEndpoints
 
     // /api/reports/season?season=2026 -> Saison 2026/27
     private static async Task<Ok<SeasonReportDto>> GetSeasonReport(
-        [Range(2000, 2100)] int season,
+        [Range(2000, 2100, ErrorMessage = "Die Saison muss zwischen 2000 und 2100 liegen.")] int season,
         IReportService reportService)
     {
         return TypedResults.Ok(await reportService.GetSeasonAsync(season));
